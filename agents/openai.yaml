@@ -1,0 +1,12 @@
+interface:
+  display_name: skripsi
+  short_description: 'Panduan riset, penulisan, dan audit skripsi Solusi'
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
