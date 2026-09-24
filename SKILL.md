@@ -1,6 +1,6 @@
 ---
-name: skripsi
-description: "Pendamping proposal dan skripsi S1 Sistem Informasi: riset literatur, pemilihan jurnal Q2/Q3 atau SINTA 2/3/4, sitasi IEEE, Bab I-V, gaya akademik Indonesia, prefix narasi, metode, pembahasan, dan audit. Gunakan ketika diminta menulis, menelaah, merevisi, memeriksa konsistensi, atau menyiapkan skripsi/seminar. Terapkan profil Solusi UPN Veteran Jawa Timur bila sesuai. Pisahkan ketentuan akademik, preferensi penulis, pola kerja, dan rekomendasi tambahan. Baca referensi secara selektif, bukan seluruh folder."
+name: skripsi-pacil
+description: "Use when working on an Indonesian Information Systems skripsi, proposal, tugas akhir, or academic report. Covers research, literature and journal review, writing and revision, IEEE citations, methods, consistency audits, and seminar or defense preparation."
 ---
 
 # Skripsi

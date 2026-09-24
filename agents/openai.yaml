@@ -1,6 +1,6 @@
 interface:
-  display_name: skripsi
-  short_description: 'Panduan riset, penulisan, dan audit skripsi Solusi'
+  display_name: skripsi-pacil
+  short_description: 'Research, writing, and review for Information Systems theses'
   icon_small: assets/icon.svg
   icon_large: assets/icon.svg
 policy:

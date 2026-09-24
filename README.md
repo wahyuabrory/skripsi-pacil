@@ -7,7 +7,7 @@ This is a set of instructions and reference modules, not an automated thesis che
 ## Install
 
 ```sh
-npx skills add wahyuabrory/skripsi-pacil --skill skripsi
+npx skills add wahyuabrory/skripsi-pacil --skill skripsi-pacil
 ```
 
 You can also give an agent [SKILL.md](SKILL.md) directly. The skill has no bootstrap script, required service, or saved user profile.
@@ -16,7 +16,7 @@ You can also give an agent [SKILL.md](SKILL.md) directly. The skill has no boots
 
 Give the agent a specific task and the material needed to do it. State what it may change.
 
-> Use the skripsi skill to revise section 1.1, Latar Belakang, in the attached draft. Keep the numbers, citations, and approved method unchanged.
+> Use the skripsi-pacil skill to revise section 1.1, Latar Belakang, in the attached draft. Keep the numbers, citations, and approved method unchanged.
 
 The agent reads `SKILL.md`, selects the relevant modules, and works only on the requested scope. It writes thesis text in formal Indonesian and uses your language for work notes. It asks a question when missing information could change the result.
 
