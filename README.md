@@ -1,6 +1,8 @@
 # Skripsi
 
-An [agent skill](SKILL.md) for researching, writing, revising, and reviewing an undergraduate Information Systems thesis. It covers literature, journal selection, IEEE citations, Chapters I–V, research methods, and thesis defenses. Its default academic profile is the Solusi track at UPN Veteran Jawa Timur, based on 2025 materials.
+An [agent skill](SKILL.md) for planning, writing, revising, and reviewing an undergraduate Information Systems thesis. It guides work on literature, journal selection, IEEE citations, Chapters I–V, methods, results, and defense preparation. The default profile is S1 Sistem Informasi, FIK, Bidang Minat Solusi, UPN Veteran Jawa Timur, based on 2025 materials.
+
+This is a set of instructions and reference modules, not an automated thesis checker. The agent uses the material you provide and verifies outside sources when the task requires it.
 
 ## Install
 
@@ -8,51 +10,74 @@ An [agent skill](SKILL.md) for researching, writing, revising, and reviewing an 
 npx skills add wahyuabrory/skripsi-pacil --skill skripsi
 ```
 
-You can also point an agent to [SKILL.md](SKILL.md) and use the skill without installing it. There is no bootstrap step, required service, or software package for the skill itself.
+You can also give an agent [SKILL.md](SKILL.md) directly. The skill has no bootstrap script, required service, or saved user profile.
 
-## First use
+## First run
 
-Give the agent the draft, data, or source to work on. Name the target section and any limits on the change. For example:
+Give the agent a specific task and the material needed to do it. State what it may change.
 
-> Use the skripsi skill to revise section 1.1, Latar Belakang, in the attached draft. Keep the numbers, citations, and method unchanged.
+> Use the skripsi skill to revise section 1.1, Latar Belakang, in the attached draft. Keep the numbers, citations, and approved method unchanged.
 
-The agent starts at `SKILL.md` and reads the relevant modules, not the whole repository. Thesis text is written in formal Indonesian. Work notes and explanations follow the user's language.
+The agent reads `SKILL.md`, selects the relevant modules, and works only on the requested scope. It writes thesis text in formal Indonesian and uses your language for work notes. It asks a question when missing information could change the result.
 
-## What it can do
+## Tasks and outputs
 
-| Request | Expected output |
+| Task | What you get |
 | --- | --- |
-| Plan a proposal or research workflow | A scoped plan tied to the research problem and available evidence |
-| Search literature or assess a journal | Candidate sources or a journal assessment that separates indexing evidence from article quality |
-| Write or revise a section | Indonesian text ready to use, with missing evidence marked rather than invented |
-| Check citations or formatting | Specific issues and corrections against the applicable guidance |
-| Audit a draft | Findings with location, evidence, rule ID, severity, and action |
-| Prepare for a proposal seminar or final defense | Preparation based on the available draft and verified rules for that stage |
+| Plan research or a proposal | A path from problem and evidence to method, evaluation, and expected output |
+| Search literature | Search criteria, candidate sources, and a synthesis of what the sources support |
+| Assess a journal or article | Separate checks of journal indexing, article quality, and relevance to the thesis |
+| Write or revise a section | Ready-to-use Indonesian text within the requested change limits |
+| Check IEEE citations | Findings on claims, citation numbers, bibliography entries, and source identity |
+| Review formatting | Checks that the supplied document format makes possible |
+| Audit consistency | Located findings with evidence, rule ID, severity, impact, and action |
+| Prepare for a seminar or defense | Questions and preparation tied to the available draft and rules for that stage |
 
-Example audit request:
+For a cross-chapter audit, you could ask:
 
-> Use the skripsi skill to check consistency across Chapter III, the results, conclusions, and abstract. Report each finding with its evidence before proposing edits.
+> Check whether Chapter III, the results, conclusions, and abstract agree. Report findings before editing. Mark anything that cannot be verified from the attached files.
 
-## Evidence and scope
+### Audit findings
 
-The skill distinguishes academic requirements, writer preferences, presentation patterns, and additional verification practices. An audit covers only the material and evidence supplied or checked. It does not issue a blanket compliance verdict for an unseen thesis.
+The [review workflow](workflows/review-revisi.md) uses `KRITIS`, `MAYOR`, `MINOR`, and `CATATAN`. Each finding records a location, the statement or value at issue, a rule ID or source, its impact, a proposed fix, and evidence still needed. The [audit template](templates/lembar-kerja.md) also records the scope and what remains unchecked.
 
-It preserves names, numbers, methods, and citation identities from the source material. Missing sources, data, confirmation, or tests are marked in a working draft instead of filled with invented results. Rule IDs identify review findings; they are not citations for the thesis.
+`CATATAN` is for advice or missing evidence. Missing material is not proof of a violation. An audit of one chapter does not become a verdict on the entire thesis.
 
-The 2025 profile is a starting point, not proof of current submission requirements. Check the latest official rules before submitting or assessing compliance. If supervisor instructions conflict with verified academic rules, resolve the conflict rather than silently choosing one.
+## Evidence rules
+
+The skill keeps four kinds of guidance separate:
+
+| Label in the modules | Meaning |
+| --- | --- |
+| `KETENTUAN` | Academic requirement to check against the applicable official rule |
+| `PREFERENSI` | Writer preference, not a campus-wide rule |
+| `POLA` | Adaptable writing or work pattern |
+| `PRAKTIK` | Additional verification or process recommendation |
+
+The agent preserves names, numbers, methods, approved decisions, and citation identities from the source. It does not invent articles, DOIs, journal rankings, permissions, data, or test results. A working draft marks gaps with `{BUTUH SUMBER}`, `{BUTUH DATA}`, `{PERLU KONFIRMASI}`, or `{BELUM DIUJI}`. Those markers are work notes, not finished thesis content.
+
+Rule IDs such as `FMT-03` identify skill guidance in an audit. They are not IEEE citations for the thesis. For consequential requirements, the agent should point to the rule and the evidence it checked.
+
+## What the material permits
+
+The agent can check text, citations, claims, and cross-chapter consistency only where the needed draft and sources are available. Font, margins, pagination, and exported layout require a view of the formatted document; Markdown text alone cannot prove them. The skill does not calculate a plagiarism score or replace an official similarity check.
+
+The 2025 Solusi profile in [academic rules](references/aturan-akademik.md) is a baseline, not proof that current submission rules are unchanged. Verify the latest applicable rules before submission. If a supervisor's direction conflicts with a verified rule, record the conflict and resolve it rather than silently choosing one.
 
 ## Repository layout
 
-| Path | Purpose |
-| --- | --- |
-| [SKILL.md](SKILL.md) | Entry point, core behavior, and module map |
-| [references/](references/) | Academic rules, chapter guidance, style, citations, methods, and source checks |
-| [workflows/](workflows/) | Research and writing flow; review and revision flow |
-| [templates/lembar-kerja.md](templates/lembar-kerja.md) | Worksheets and structured report formats |
-| [checklists/audit-akhir.md](checklists/audit-akhir.md) | Final checks |
-| [agents/openai.yaml](agents/openai.yaml) and [assets/icon.svg](assets/icon.svg) | Agent listing metadata and icon |
+```text
+SKILL.md                       Entry point and module map
+references/                    Academic rules, chapters, literature, citations, style, methods, ethics
+workflows/                     Research/writing and review/revision procedures
+templates/lembar-kerja.md      Research worksheets and audit records
+checklists/audit-akhir.md      Scope-based closing checks
+agents/openai.yaml             Agent listing metadata
+assets/icon.svg                Agent icon
+LICENSE                        MIT license
+```
 
-Keep the directory structure so relative links between modules continue to work.
+`SKILL.md` links to specific modules. Keep the directory structure so those relative links work.
 
 ## License
 
