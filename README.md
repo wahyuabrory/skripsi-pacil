@@ -1,37 +1,42 @@
 # Skripsi
 
-Skill modular untuk riset, penulisan, revisi, dan pemeriksaan skripsi Sistem Informasi. Semua isi berupa Markdown. Tidak ada skrip, paket perangkat lunak, atau proses instalasi yang harus dijalankan oleh skill.
+An agent skill for researching, writing, revising, and auditing an undergraduate Information Systems thesis. Its default academic profile is the Solusi track at UPN Veteran Jawa Timur, based on 2025 materials. The skill uses Markdown instructions and requires no scripts or software packages at runtime.
 
-## Instalasi
+## Install
 
 ```sh
 npx skills add wahyuabrory/skripsi-pacil --skill skripsi
 ```
 
-Skill juga dapat dibaca langsung dari folder ini tanpa memasang paket lain.
+You can also read and use the skill directly from this repository without installing it.
 
-## Struktur
+## Use the skill
 
-- `SKILL.md`: pintu masuk, perilaku inti, dan peta pemilihan modul.
-- `references/`: aturan, gaya, pola narasi, sitasi, jurnal, metode, dan anti-pattern.
-- `workflows/`: alur penelitian/penulisan serta review/revisi.
-- `templates/`: lembar bukti dan keluaran yang dapat diisi.
-- `checklists/`: pemeriksaan akhir sesuai lingkup.
+Start with [SKILL.md](SKILL.md). Give the agent the draft, data, or source to work on, and name the target section and limits of the change. The agent uses the module map in `SKILL.md` to read only what the task needs.
 
-Pertahankan susunan folder agar tautan relatif tetap berfungsi. Arahkan agen untuk membaca `SKILL.md`, bukan seluruh direktori. Petunjuk dapat digunakan mandiri. Pekerjaan nyata tetap memerlukan naskah, data, atau sumber yang hendak diperiksa.
+For example:
 
-## Contoh permintaan
+> Use the skripsi skill to revise section 1.1, Latar Belakang, in the attached draft. Keep the numbers, citations, and method unchanged.
 
-"Gunakan skripsi. Revisi 1.1 Latar Belakang. Pertahankan angka dan referensi; jangan mengubah metode."
+> Use the skripsi skill to assess whether the attached article can be a primary reference. Report journal indexing evidence separately from the article's relevance and quality.
 
-"Gunakan skripsi. Periksa jurnal ini sebagai rujukan utama. Bedakan bukti kuartil, status indeks, dan kualitas artikelnya."
+> Use the skripsi skill to check consistency across Chapter III, the results, conclusions, and abstract. Report each finding with its evidence before proposing edits.
 
-"Gunakan skripsi. Tulis pembahasan tabel ini dengan prefix yang bervariasi dan klaim terbatas pada hasil."
+Thesis text is written in formal Indonesian. The agent uses the user's language for work notes and explanations.
 
-"Gunakan skripsi. Audit konsistensi Bab III, hasil, kesimpulan, dan abstrak. Laporkan masalah dahulu, jangan langsung mengganti hasil."
+## Contents
 
-## Batas
+- [SKILL.md](SKILL.md): core instructions and module map.
+- [`references/`](references/): academic rules, chapter guidance, writing style, citations, methods, and source checks.
+- [`workflows/`](workflows/): research, writing, review, and revision procedures.
+- [`templates/lembar-kerja.md`](templates/lembar-kerja.md): worksheets and structured report formats.
+- [`checklists/audit-akhir.md`](checklists/audit-akhir.md): final checks.
+- [`agents/openai.yaml`](agents/openai.yaml) and [`assets/icon.svg`](assets/icon.svg): agent listing metadata and icon.
 
-Profil akademik dasar bersifat lokal dan menggunakan ketentuan 2025. Periksa pembaruan ketika mengurus pengajuan. Preferensi dan pola tidak menggantikan ketentuan resmi. Rekomendasi metode dan rujukan teknis tambahan ditandai terpisah; tidak ada jurnal yang dijamin layak tanpa verifikasi.
+Keep the directory structure so relative links between modules continue to work.
 
-Nomor aturan digunakan pada catatan review, bukan sebagai sitasi akademik naskah. Contoh dan tempat isian bukan data penelitian. Status audit selalu dibatasi pada bagian serta bukti yang benar-benar diperiksa.
+## Limits
+
+The 2025 profile is a starting point, not proof of current submission requirements. Check the latest official rules before submitting or assessing compliance. Keep supervisor instructions and writer preferences separate from academic requirements.
+
+Examples and placeholders are not research data. An audit covers only the material and evidence examined. Rule IDs identify review findings; they are not citations for the thesis.
